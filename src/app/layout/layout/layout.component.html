@@ -2,16 +2,18 @@
 
   <!-- SIDENAV -->
   <mat-sidenav
+    #sidenav
     class="layout-sidenav"
     mode="side"
     [opened]="isSidenavOpen">
 
-    <div class="brand">
-      <mat-icon>business</mat-icon>
-      <span>ERP SYSTEM</span>
+    <div class="brand" [ngClass]="{'collapsed': !isSidenavOpen}">
+      <mat-icon style="color: white;">business</mat-icon>
+      <span *ngIf="isSidenavOpen">ERP SYSTEM</span>
     </div>
 
-    <app-sidenav></app-sidenav>
+    <!-- Pass isSidenavOpen to child component -->
+    <app-sidenav [isSidenavOpen]="isSidenavOpen"></app-sidenav>
 
   </mat-sidenav>
 

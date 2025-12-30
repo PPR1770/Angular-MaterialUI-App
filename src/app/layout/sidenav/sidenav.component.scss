@@ -1,18 +1,54 @@
 .menu {
-  padding-top: 10px;
+  width: 250px;
+  transition: width 0.3s;
+
+  &.collapsed {
+    width: 70px; // only icons visible
+
+    a span {
+      display: none; // hide label
+    }
+
+    .arrow {
+      display: none; // hide expand/collapse arrow
+    }
+
+    .child-menu {
+      display: none; // hide children
+    }
+  }
 
   a {
+    display: flex;
+    align-items: center;
     color: #e5e7eb;
     margin: 4px 10px;
     border-radius: 8px;
+    transition: background 0.2s;
 
     mat-icon {
       margin-right: 10px;
     }
 
-    &.active,
-    &:hover {
+    &:hover,
+    &.active {
       background: #374151;
+      color: #fff;
+    }
+  }
+
+  .child-menu {
+    padding-left: 30px;
+
+    a {
+      font-size: 0.9rem;
+      color: #cbd5e1;
+
+      &:hover,
+      &.active {
+        background: #4b5563;
+        color: #fff;
+      }
     }
   }
 }

@@ -6,6 +6,8 @@ interface MenuItem {
   icon: string;
   route: string;
   roles: string[];
+  children?: MenuItem[];
+  expanded?: boolean;
 }
 
 @Component({
@@ -18,10 +20,19 @@ export class SidenavComponent {
 
   menuItems: MenuItem[] = [
     { label: 'Dashboard', icon: 'dashboard', route: '/dashboard', roles: ['admin', 'user'] },
-    { label: 'Users', icon: 'group', route: '/users', roles: ['admin'] },
+    {
+      label: 'Users', icon: 'group', roles: ['admin'], children: [
+        { label: 'All Users', icon: 'person', route: '/users/all', roles: ['admin'] },
+        { label: 'Add User', icon: 'person_add', route: '/users/add', roles: ['admin'] }
+      ],
+      route: ''
+    },
     { label: 'Products', icon: 'inventory', route: '/products', roles: ['admin', 'user'] },
     { label: 'Reports', icon: 'bar_chart', route: '/reports', roles: ['admin'] },
   ];
 
-  constructor(public authService: AuthService) {}
+  toggleMenu(item: MenuItem) {
+    item.expanded = !item.expanded;
+  }
 }
+

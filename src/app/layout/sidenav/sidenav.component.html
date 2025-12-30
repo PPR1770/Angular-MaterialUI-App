@@ -1,23 +1,32 @@
-<mat-nav-list class="menu">
+<mat-nav-list class="menu" [ngClass]="{'collapsed': !isSidenavOpen}">
+  <ng-container *ngFor="let item of menuItems">
 
-  <a mat-list-item routerLink="/dashboard" routerLinkActive="active">
-    <mat-icon>dashboard</mat-icon>
-    <span>Dashboard</span>
-  </a>
+    <!-- Parent Menu without children -->
+    <a mat-list-item *ngIf="!item.children"
+       routerLink="{{item.route}}"
+       routerLinkActive="active"
+       [title]="!isSidenavOpen ? item.label : ''">
+      <mat-icon>{{ item.icon }}</mat-icon>
+      <span *ngIf="isSidenavOpen">{{ item.label }}</span>
+    </a>
 
-  <a mat-list-item routerLink="/users" routerLinkActive="active">
-    <mat-icon>group</mat-icon>
-    <span>Users</span>
-  </a>
+    <!-- Parent Menu with Children -->
+    <div *ngIf="item.children">
+      <a mat-list-item (click)="toggleMenu(item)" [class.active]="item.expanded">
+        <mat-icon>{{ item.icon }}</mat-icon>
+        <span *ngIf="isSidenavOpen">{{ item.label }}</span>
+        <mat-icon class="arrow" *ngIf="isSidenavOpen">{{ item.expanded ? 'expand_less' : 'expand_more' }}</mat-icon>
+      </a>
 
-  <a mat-list-item routerLink="/products" routerLinkActive="active">
-    <mat-icon>inventory</mat-icon>
-    <span>Products</span>
-  </a>
+      <div class="child-menu" *ngIf="item.expanded && isSidenavOpen">
+        <a mat-list-item *ngFor="let child of item.children"
+           routerLink="{{child.route}}"
+           routerLinkActive="active">
+          <mat-icon>{{ child.icon }}</mat-icon>
+          <span>{{ child.label }}</span>
+        </a>
+      </div>
+    </div>
 
-  <a mat-list-item routerLink="/reports" routerLinkActive="active">
-    <mat-icon>bar_chart</mat-icon>
-    <span>Reports</span>
-  </a>
-
+  </ng-container>
 </mat-nav-list>
