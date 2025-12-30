@@ -1,0 +1,17 @@
+<mat-toolbar color="primary" class="header">
+  <button mat-icon-button (click)="toggle.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span class="title">Dashboard</span>
+
+  <span class="spacer"></span>
+
+  <span class="user-name">
+    {{ authService.getUser()?.name }}
+  </span>
+
+  <button mat-icon-button (click)="authService.logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>

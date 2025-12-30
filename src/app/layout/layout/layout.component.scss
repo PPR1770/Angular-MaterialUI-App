@@ -1,0 +1,37 @@
+.layout-container {
+  height: 100vh;
+}
+
+.layout-sidenav {
+  width: 260px;
+  background: #1f2937;
+  color: #fff;
+}
+
+.brand {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+  font-size: 18px;
+  font-weight: 600;
+  background: #111827;
+
+  mat-icon {
+    color: #60a5fa;
+  }
+}
+
+.layout-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #f3f4f6;
+}
+
+.page-content {
+  flex: 1;
+  padding: 20px;
+  overflow: auto;
+}

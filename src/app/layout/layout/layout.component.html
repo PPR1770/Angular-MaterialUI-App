@@ -1,0 +1,34 @@
+<mat-sidenav-container class="layout-container">
+
+  <!-- SIDENAV -->
+  <mat-sidenav
+    class="layout-sidenav"
+    mode="side"
+    [opened]="isSidenavOpen">
+
+    <div class="brand">
+      <mat-icon>business</mat-icon>
+      <span>ERP SYSTEM</span>
+    </div>
+
+    <app-sidenav></app-sidenav>
+
+  </mat-sidenav>
+
+  <!-- MAIN CONTENT -->
+  <mat-sidenav-content class="layout-content">
+
+    <!-- HEADER -->
+    <app-header (toggle)="toggleSidenav()"></app-header>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
+
+    <!-- FOOTER -->
+    <app-footer></app-footer>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

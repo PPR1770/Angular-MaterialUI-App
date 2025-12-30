@@ -1,0 +1,18 @@
+.menu {
+  padding-top: 10px;
+
+  a {
+    color: #e5e7eb;
+    margin: 4px 10px;
+    border-radius: 8px;
+
+    mat-icon {
+      margin-right: 10px;
+    }
+
+    &.active,
+    &:hover {
+      background: #374151;
+    }
+  }
+}
