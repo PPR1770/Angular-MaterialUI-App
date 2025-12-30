@@ -1,6 +1,13 @@
 # AngularMaterilUIApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.11.
+# Features And Archeticture
+1.Complete ERP like archeticture
+2.authguard and intercepter implemented
+3.Material UI Theme integerated 
+4.professional login page
+5.beautifull dashboard
+6.layout includes topbar, sidenave + toggalable , footer
 
 ## Development server
 
