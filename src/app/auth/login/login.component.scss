@@ -1,65 +1,61 @@
-/* Full page wrapper */
 .login-wrapper {
-  height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #3f51b5, #2196f3);
+  height: 100vh;
+  width: 100%;
   font-family: 'Roboto', sans-serif;
 
-  .login-card {
-    width: 400px;
-    padding: 40px 30px;
-    border-radius: 16px;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.25);
-    background: #ffffff;
+  .login-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #3f51b5, #2196f3);
+    color: #fff;
+    padding: 60px;
 
-    .login-header {
-      text-align: center;
-      margin-bottom: 30px;
-
-      .logo {
-        font-size: 60px;
-        color: #3f51b5;
-        margin-bottom: 10px;
-      }
-
-      h1 {
-        margin: 0;
-        font-size: 28px;
-        color: #333;
-        font-weight: 600;
-      }
-
-      p {
-        margin-top: 5px;
-        color: #666;
-        font-size: 14px;
-      }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
     }
 
+    p {
+      font-size: 1.2rem;
+      opacity: 0.85;
+    }
+  }
+
+  .login-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 60px;
+
     form {
+      width: 100%;
+      max-width: 400px;
       display: flex;
       flex-direction: column;
       gap: 20px;
 
-      .full-width {
-        width: 100%;
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
       }
 
-      mat-form-field {
-        width: 100%;
+      .full-width { width: 100%; }
 
-        mat-icon {
-          color: #3f51b5;
-        }
+      mat-form-field mat-icon {
+        color: #3f51b5;
       }
 
       .error-msg {
         color: #f44336;
-        font-size: 13px;
         text-align: center;
-        margin-bottom: -10px;
+        font-size: 13px;
       }
 
       .login-btn {
@@ -69,27 +65,62 @@
         font-size: 16px;
         padding: 12px;
         border-radius: 8px;
-        transition: all 0.3s ease;
+        transition: all 0.3s;
 
         &:hover {
           background: linear-gradient(135deg, #303f9f, #1976d2);
         }
       }
-    }
 
-    .login-footer {
-      margin-top: 25px;
-      text-align: center;
-      font-size: 12px;
-      color: #999;
+      .links {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+
+        a {
+          color: #3f51b5;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
     }
   }
 }
 
-/* Responsive */
-@media(max-width: 500px) {
-  .login-card {
-    width: 90%;
-    padding: 30px 20px;
+/* Responsive for tablets and mobile */
+@media (max-width: 900px) {
+  .login-wrapper {
+    flex-direction: column;
+
+    .login-left, .login-right {
+      flex: none;
+      width: 100%;
+      padding: 40px 20px;
+    }
+
+    .login-left {
+      order: 2; // Show form on top if needed
+      text-align: center;
+    }
+
+    .login-right {
+      order: 1;
+    }
   }
+}
+
+::ng-deep .full-width.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: black; /* label color on focus */
+  border-color: black; /* outline border color */
+}
+
+::ng-deep .full-width.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  border-color: black; /* outline color when focused */
+}
+
+::ng-deep .full-width.mat-form-field.mat-form-field-invalid .mat-form-field-outline {
+  border-color: red; /* optional: invalid state */
 }

@@ -1,18 +1,16 @@
 <div class="login-wrapper">
-  <mat-card class="login-card">
 
-    <!-- Header -->
-    <div class="login-header">
-      <mat-icon class="logo">business</mat-icon>
-      <h1>ERP SYSTEM</h1>
-      <p>Sign in to access your dashboard</p>
-    </div>
+  <div class="login-left">
+    <h1>Welcome to Your App</h1>
+    <p>Access your projects and insights</p>
+  </div>
 
-    <!-- Form -->
+  <div class="login-right">
     <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <h2>Sign in to Your Account</h2>
 
       <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Email</mat-label>
+       <mat-label style="color: blue;  font-size: medium;">Email</mat-label>
         <mat-icon matPrefix>email</mat-icon>
         <input matInput formControlName="email" />
         <mat-error *ngIf="loginForm.get('email')?.invalid">
@@ -21,7 +19,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Password</mat-label>
+        <mat-label style="color: blue; font-size: medium;">Password</mat-label>
         <mat-icon matPrefix>lock</mat-icon>
         <input matInput type="password" formControlName="password" />
         <mat-error *ngIf="loginForm.get('password')?.invalid">
@@ -29,26 +27,18 @@
         </mat-error>
       </mat-form-field>
 
-      <!-- Error message -->
       <div class="error-msg" *ngIf="errorMessage">{{ errorMessage }}</div>
 
-      <!-- Login button -->
-      <button
-        mat-raised-button
-        color="primary"
-        class="full-width login-btn"
-        type="submit"
-        [disabled]="loginForm.invalid"
-      >
-        Login
+      <button mat-raised-button color="primary" class="full-width login-btn" type="submit" [disabled]="loginForm.invalid">
+        Log in
       </button>
 
+      <div class="links">
+        <a href="#">Forgot Password?</a>
+        <a href="#">Create an account</a>
+      </div>
+
     </form>
+  </div>
 
-    <!-- Footer -->
-    <div class="login-footer">
-      <span>© 2025 ERP System. All rights reserved.</span>
-    </div>
-
-  </mat-card>
 </div>
